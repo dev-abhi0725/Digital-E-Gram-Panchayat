@@ -22,16 +22,16 @@ const Home = () => {
       <div className="homeBannerSection">
         <Slider {...settings}>
             <div className="item">
-                <img src={Banner1} className="w-100"/>
+                <img src={Banner1} alt="Banner1" className="w-100"/>
             </div>
             <div className="item">
-                <img src={Banner2} className="w-100"/>
+                <img src={Banner2} alt="Banner2" className="w-100"/>
             </div>
             <div className="item">
-                <img src={Banner3} className="w-100"/>
+                <img src={Banner3} alt="Banner3" className="w-100"/>
             </div>
             <div className="item">
-                <img src={Banner4} className="w-100"/>
+                <img src={Banner4} alt="Banner4" className="w-100"/>
             </div>
             
         </Slider>
