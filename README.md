@@ -3,9 +3,9 @@
 
 A comprehensive web-based platform designed to digitize rural governance, enabling **citizens**, **staff**, and **admin** to manage scheme applications and approvals efficiently.
 
-Live Demo : spectacular-cat-7d0ee4.netlify.app
-Unique Id Admin :JH2025ADMIN
-Unique Id Staff : JH2025STAFF
+*Live Demo : spectacular-cat-7d0ee4.netlify.app
+*Unique Id Admin :JH2025ADMIN
+*Unique Id Staff : JH2025STAFF
 
 ## 🚀 Features
 
