@@ -1,0 +1,623 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+
+.headerWrapper {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* Header Image Section */
+.headerWrapper .header {
+  width: 100%;
+  height: auto;
+  /* padding: 15px 0px; */
+  /* background: #b96f6f; */
+}
+.header {
+  border-bottom: #0bd476 1px solid;
+  width: 100%;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo and buttons */
+  flex-wrap: wrap;
+  padding: 10px 20px; /* Optional: add padding */
+  /* background: #947b7b; */
+}
+
+.logoWrapper {
+  width: 15%;
+}
+
+.part2 {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+  width: 70%;
+  justify-content: flex-end;
+}
+.part2 button , .part2 .login {
+  padding: 10px 20px;
+  color: black;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  font-size: 25px;
+  font-weight: 500;
+}
+.part2 button:hover , .part2 .login:hover {
+  background: #80f5be;
+}
+.logoWrapper img {
+  width: 100%;
+  margin: auto;
+  padding: auto 0px;
+}
+
+
+.menu-btn {
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  /* margin-left: 10px; */
+  display: none;
+}
+
+
+.menu-btn svg{
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.menu-btn-box{
+  width: 100%;
+  background:transparent;
+  position: absolute;
+  top: 75px;
+  right: 0px;
+  z-index: 9999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:flex-end;
+  backdrop-filter: blur(8px); /* Blur effect */
+}
+.menu-btn-box button{
+  transition: all .4s ease-in-out;
+  width: 100%;
+  border: none;
+  padding:  10px;
+
+}
+.m-btn{
+  background:none;
+}
+
+
+.logout{
+  font-size: 25px;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------- */
+
+
+/* Home Banner */
+.homeBannerSection {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  max-width: 100%;
+}
+
+.homeBannerSection * {
+  outline: none;
+}
+.homeBannerSection .item img {
+  width: 100%;
+  height: 550px; /* or auto for variable height */
+  object-fit: fill;
+  display: block;
+}
+.homeBannerSection .slick-arrow {
+  position: absolute;
+  top: 45%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  width: 40px !important;
+  height: 40px !important;
+  background: #ffffff;
+  border-radius: 100%;
+  justify-content: center;
+  font-weight: bold;
+  align-items: center;
+  font-family: FontAwesome !important;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
+}
+.homeBannerSection .slick-arrow.slick-next {
+  right: 35px !important;
+}
+.homeBannerSection .slick-arrow.slick-prev {
+  left: 35px !important;
+}
+
+.slick-next:before,
+.slick-prev:before {
+  font-family: FontAwesome !important;
+  color: #000000 !important;
+  opacity: 0.8;
+}
+
+
+@media screen and (max-width: 350px){
+  
+  .homeBannerSection .item img {
+    height: 50vh !important;
+  }
+}
+@media screen and (max-width: 500px){
+  
+  .homeBannerSection .item img {
+    height: 40vh !important;
+  }
+}
+
+
+
+
+/* ------------------------------- */
+
+
+/* LoginModal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* Blur effect */
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+}
+.m-content {
+  width: 800px;
+}
+
+.modal-content-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+}
+.popout {
+  font-size: 25px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+/* Login button styling */
+.login-btn {
+  margin-top: 15px;
+  width: 100%;
+}
+
+
+
+
+
+/* ---------------------------------------------- */
+
+/* Scheme Start here */
+
+.css-11r052a{   
+  width: 500px !important;
+  height: 500px !important;
+} 
+#schemes-modal-title{
+  text-align: center !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid black;
+}
+.css-1p4qrhw-MuiListItem-root{
+  background: #b9bbba;
+  margin: 5px 0px;
+}
+.css-rizt0-MuiTypography-root{
+  text-transform: capitalize !important;
+  font-size: 20px !important;
+}
+/* Scheme End here */
+
+/* ------------------------------------------------ */
+
+
+
+/* Admin Dashboard Start here */
+
+.admintext {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 3.5rem;
+  border-bottom: #949393 1px solid;
+}
+.menu-bar {
+  display: flex;
+  gap: 1rem;
+  /* background-color: #b56c6c; */
+  padding: 10px;
+  border-radius: 5px;
+  /* margin-bottom: 10px; */
+}
+
+.menu-item {
+  position: relative;
+  cursor: pointer;
+  padding: 8px 15px;
+  font-weight: 500;
+  color: #333 !important;
+  font-size: 20px;
+  transition: all 0.2s ease-in-out;
+  border: solid 1px #0bd476 !important;
+  border-radius: 10px;
+  /* background: #d97777; */
+}
+.b-bt{
+  background:none !important;
+}
+.mm-btn{
+  /* display: flexbox; */
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust spacing */
+  
+}
+.n-btn{
+  flex: 1 1 calc(25% - 10px);
+  
+}
+.menu-item:hover {
+  background-color: #80f5be !important;
+  border-radius: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 45px;
+  left: 5px;
+  font-size: 15px;
+  background-color: #fff;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content div {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.dropdown-content div:hover {
+  background-color: #80f5be;
+}
+
+.menu-item:hover .dropdown-content {
+  display: block;
+}
+.h-name{
+  font-size: 30px !important;
+  text-align:center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+.s-name{
+  text-transform: capitalize !important;
+  font-size: 20px !important;
+  text-align: center;
+  
+}
+.e-name{
+  text-align: center;
+  font-size: 25px ;
+
+
+}
+
+
+/* Admin Dashboard End here */
+
+
+/* Scheme form application */
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- */
+
+/* Responsive */
+
+@media screen and (max-width: 1000px){
+.part2 .login{
+  font-size: 20px;
+}
+  .m-content {
+  width: 700px !important;
+}
+}
+@media screen and (max-width: 800px){
+.part2 .login{
+  font-size: 18px;
+}
+.logout{
+  font-size: 20px !important;
+}
+  .admintext{
+    font-size: 3rem !important;
+  }
+  .m-content {
+  width: 600px !important;
+}
+}
+
+
+@media screen and ( max-width:780px) {
+  .menu-btn{
+    display:block;
+  }
+  
+  
+  .part2 .login{
+    display: none;
+  }
+  .admintext{
+    font-size: 2.5rem !important;
+  }
+  
+/* Scheme box */
+.css-11r052a{   
+  width: 300px !important;
+  height: 300px !important;
+} 
+.css-1p4qrhw-MuiListItem-root{
+  margin: 2px 0px;
+}
+.css-rizt0-MuiTypography-root{
+  font-size: 15px !important;
+}
+#schemes-modal-title{
+  font-size: 1rem;
+}
+
+
+/* LoginModal */
+
+.modal-content {
+  width: 300px;
+}
+.login-btn {
+  margin-top: 10px;
+}
+.menu-item {
+  padding: 4px 10px !important;
+  font-size: 15px !important;
+}
+.menu-bar{
+  padding-bottom: 0px !important;
+}
+.h-name{
+  font-size: 20px !important;
+}
+.s-name{
+  font-size: 10px !important;
+}
+.act-btn{
+  font-size: 10px !important;
+  padding: 2px 5px !important;
+  margin: 0px !important;
+}
+.e-name{
+  font-size: 15px;
+}
+.m-content {
+  width: 500px !important;
+}
+}
+@media screen and ( max-width:500px) {
+  .m-content{
+    width: 430px !important;
+  }
+}
+@media screen and ( max-width:400px) {
+  .logoWrapper{
+    width: 30%;
+  }
+  .menu-btn-box button{
+    padding: 5px;
+  }
+  .menu-btn svg{
+    font-size: 20px;
+  }
+  .m-btn{
+    font-size: 12px;
+  }
+  .logout{
+  font-size: 15px !important;
+}
+.admintext{
+    font-size: 2rem !important;
+  }
+  .h-name{
+  font-size: 15px !important;
+}
+.s-name{
+  font-size: 10px !important;
+}
+.e-name{
+  font-size: 12px !important;
+}
+.n-btn{
+  flex: 1 1 calc(50% - 10px);
+}
+.m-content {
+  width: 300px !important;
+}
+}
+@media screen and ( max-width:350px) {
+  .logoWrapper{
+    width: 25%;
+  }
+  .logout{
+  font-size: 12px !important;
+}
+.admintext{
+    font-size: 1.5rem !important;
+  }
+  .menu-item {
+  padding: 2px 5px !important;
+  font-size: 10px !important;
+  margin-bottom: 0px !important;
+}}
+@media screen and ( max-width:200px){
+.logout{
+  font-size: 10px !important;
+  padding-right: 0px !important;
+}
+.admintext{
+    font-size: 1.5rem !important;
+  }
+  .h-name{
+  font-size: 13px !important;
+}
+.s-name{
+  font-size: 8px !important;
+}
+.e-name{
+  font-size: 8px !important;
+}
+.m-content {
+  width: 200px !important;
+}
+}
+
+
+
+
+
+
+
+/* Profile Box */
+.profile-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+}
+
+/* Avatar */
+.profile-avatar-label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+}
+
+/* Edit Icon */
+.edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.profile-avatar-label:hover .edit-icon {
+  opacity: 1;
+}
+
+@media (max-width: 992px) {
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+  }
+}
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+  background-color: #f8f9fa;
+}
+
+.placeholder-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-avatar .placeholder-icon {
+  width: 100%;
+  height: 100%;
+  color: #aaa;
+}
