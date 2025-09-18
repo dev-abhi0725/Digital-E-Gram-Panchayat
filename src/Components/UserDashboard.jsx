@@ -260,7 +260,7 @@ const UserDashboard = () => {
           <div>
             <p><strong>Name:</strong> {profile.name}</p>
             <p><strong>Gender:</strong> {profile.gender}</p>
-            <p><strong>Father's Name:</strong> {profile.fatherName}</p>clear
+            <p><strong>Father's Name:</strong> {profile.fatherName}</p>
             <p><strong>Mother's Name:</strong> {profile.motherName}</p>
             <p><strong>Phone:</strong> {profile.phoneNumber}</p>
             <p><strong>Email:</strong> {profile.email}</p>

@@ -77,7 +77,7 @@ export default function SchemesModal({ open, onClose, openLoginModal }) {
                 key={scheme.id}
                 secondaryAction={
                   <Button variant="contained" onClick={handleApply}>
-                    Applyy
+                    Apply
                   </Button>
                 }
               >

@@ -197,11 +197,11 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
             </Row>
             <Row className="mb-2">
               <Col>
-                <Form.Label>Father Name</Form.Label>
+                <Form.Label>Father's Name</Form.Label>
                 <Form.Control name="fatherName" value={formData.fatherName} onChange={handleChange} disabled={readOnly} required/>
               </Col>
               <Col>
-                <Form.Label>Mother Name</Form.Label>
+                <Form.Label>Mother's Name</Form.Label>
                 <Form.Control name="motherName" value={formData.motherName} onChange={handleChange} disabled={readOnly} required />
               </Col>
               <Col>
@@ -283,7 +283,7 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
                 )}
               </Col>
               <Col>
-                <Form.Label>Upload Document Picture</Form.Label>
+                <Form.Label>Upload Aadhaar Card Pictuer</Form.Label>
                 {readOnly && formData.documentPicture ? (
                   <a href={formData.documentPicture} target="_blank" rel="noopener noreferrer">View Document</a>
                 ) : (
