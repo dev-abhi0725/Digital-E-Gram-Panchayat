@@ -4,6 +4,8 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationData }) => {
   const db = getFirestore();
@@ -97,6 +99,7 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
       return res.data.secure_url;
     } catch (err) {
       console.error("Cloudinary upload error:", err);
+      toast.error("Image upload failed. Please try again.");
       return null;
     }
   };
@@ -105,13 +108,13 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
     if (readOnly) return;
 
     if (!formData.declaration) {
-      alert("Please accept the declaration before submitting.");
+      toast.warning("Please accept the declaration before submitting.");
       return;
     }
 
     const auth = getAuth();
     if (!auth.currentUser) {
-      alert("You must be logged in to submit the form.");
+      toast.error("You must be logged in to submit the form.");
       return;
     }
 
@@ -138,46 +141,80 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
       };
 
       await addDoc(collection(db, "applications"), dataToSave);
-      alert("Form data saved to Firestore!");
+      toast.success("Your form has been submitted successfully!");
       onClose();
     } catch (error) {
       console.error("Error saving form data:", error);
-      alert("Error submitting form. Please try again later.");
+      toast.error("Error submitting form. Please try again later.");
     }
   };
 
   if (!scheme) return null;
 
   return (
-    <div className="modal show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}>
+    <div
+      className="modal show d-block"
+      tabIndex="-1"
+      role="dialog"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <div className="modal-dialog modal-lg" role="document">
         <div className="modal-content m-content">
           <div className="modal-header">
             <h5 className="modal-title">
               {readOnly ? "View Application" : `Apply for: ${scheme?.name}`}
             </h5>
-            <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
+            <button
+              type="button"
+              className="btn-close"
+              aria-label="Close"
+              onClick={onClose}
+            ></button>
           </div>
           <div className="modal-body">
             <h5 className="mb-3">Personal Details</h5>
             <Row className="mb-2">
               <Col>
                 <Form.Label>First Name</Form.Label>
-                <Form.Control name="firstName" value={formData.firstName} onChange={handleChange} disabled={readOnly} required/>
+                <Form.Control
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                />
               </Col>
               <Col>
                 <Form.Label>Middle Name</Form.Label>
-                <Form.Control name="middleName" value={formData.middleName} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="middleName"
+                  value={formData.middleName}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control name="lastName" value={formData.lastName} onChange={handleChange} disabled={readOnly} required/>
+                <Form.Control
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                />
               </Col>
             </Row>
             <Row className="mb-2">
               <Col>
                 <Form.Label>Gender</Form.Label>
-                <Form.Select name="gender" value={formData.gender} onChange={handleChange} disabled={readOnly} required>
+                <Form.Select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                >
                   <option value="">Select</option>
                   <option>Male</option>
                   <option>Female</option>
@@ -186,8 +223,14 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
               </Col>
               <Col>
                 <Form.Label>Category</Form.Label>
-                <Form.Select name="category" value={formData.category} onChange={handleChange} disabled={readOnly} required>
-                <option value="">Select</option>
+                <Form.Select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                >
+                  <option value="">Select</option>
                   <option>OBC</option>
                   <option>ST</option>
                   <option>SC</option>
@@ -198,15 +241,34 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
             <Row className="mb-2">
               <Col>
                 <Form.Label>Father's Name</Form.Label>
-                <Form.Control name="fatherName" value={formData.fatherName} onChange={handleChange} disabled={readOnly} required/>
+                <Form.Control
+                  name="fatherName"
+                  value={formData.fatherName}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                />
               </Col>
               <Col>
                 <Form.Label>Mother's Name</Form.Label>
-                <Form.Control name="motherName" value={formData.motherName} onChange={handleChange} disabled={readOnly} required />
+                <Form.Control
+                  name="motherName"
+                  value={formData.motherName}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                />
               </Col>
               <Col>
                 <Form.Label>Date of Birth</Form.Label>
-                <Form.Control type="date" name="dob" value={formData.dob} onChange={handleChange} disabled={readOnly} required/>
+                <Form.Control
+                  type="date"
+                  name="dob"
+                  value={formData.dob}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                  required
+                />
               </Col>
             </Row>
 
@@ -214,25 +276,50 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
             <Row className="mb-2">
               <Col>
                 <Form.Label>Address</Form.Label>
-                <Form.Control name="corrAddress" value={formData.corrAddress} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="corrAddress"
+                  value={formData.corrAddress}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
                 <Form.Label>City/Town/Village</Form.Label>
-                <Form.Control name="corrCity" value={formData.corrCity} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="corrCity"
+                  value={formData.corrCity}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
             </Row>
             <Row className="mb-2">
               <Col>
                 <Form.Label>District</Form.Label>
-                <Form.Control name="corrDistrict" value={formData.corrDistrict} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="corrDistrict"
+                  value={formData.corrDistrict}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
                 <Form.Label>State</Form.Label>
-                <Form.Control name="corrState" value={formData.corrState} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="corrState"
+                  value={formData.corrState}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
                 <Form.Label>Pincode</Form.Label>
-                <Form.Control name="corrPincode" value={formData.corrPincode} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="corrPincode"
+                  value={formData.corrPincode}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
             </Row>
 
@@ -250,25 +337,50 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
             <Row className="mb-2">
               <Col>
                 <Form.Label>Address</Form.Label>
-                <Form.Control name="permAddress" value={formData.permAddress} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="permAddress"
+                  value={formData.permAddress}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
-                <Form.Label >City/Town/Village</Form.Label>
-                <Form.Control name="permCity" value={formData.permCity} onChange={handleChange} disabled={readOnly} />
+                <Form.Label>City/Town/Village</Form.Label>
+                <Form.Control
+                  name="permCity"
+                  value={formData.permCity}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
             </Row>
             <Row className="mb-2">
               <Col>
                 <Form.Label>District</Form.Label>
-                <Form.Control name="permDistrict" value={formData.permDistrict} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="permDistrict"
+                  value={formData.permDistrict}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
                 <Form.Label>State</Form.Label>
-                <Form.Control name="permState" value={formData.permState} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="permState"
+                  value={formData.permState}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
               <Col>
                 <Form.Label>Pincode</Form.Label>
-                <Form.Control name="permPincode" value={formData.permPincode} onChange={handleChange} disabled={readOnly} />
+                <Form.Control
+                  name="permPincode"
+                  value={formData.permPincode}
+                  onChange={handleChange}
+                  disabled={readOnly}
+                />
               </Col>
             </Row>
 
@@ -277,17 +389,41 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
               <Col>
                 <Form.Label>Upload Picture of Applicant</Form.Label>
                 {readOnly && formData.applicantPicture ? (
-                  <a href={formData.applicantPicture} target="_blank" rel="noopener noreferrer">View Picture</a>
+                  <a
+                    href={formData.applicantPicture}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Picture
+                  </a>
                 ) : (
-                  <Form.Control type="file" name="applicantPicture" onChange={handleChange} disabled={readOnly} required/>
+                  <Form.Control
+                    type="file"
+                    name="applicantPicture"
+                    onChange={handleChange}
+                    disabled={readOnly}
+                    required
+                  />
                 )}
               </Col>
               <Col>
                 <Form.Label>Upload Aadhaar Card Picture(Only Image)</Form.Label>
                 {readOnly && formData.documentPicture ? (
-                  <a href={formData.documentPicture} target="_blank" rel="noopener noreferrer">View Document</a>
+                  <a
+                    href={formData.documentPicture}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Document
+                  </a>
                 ) : (
-                  <Form.Control type="file" name="documentPicture" onChange={handleChange} disabled={readOnly} required/>
+                  <Form.Control
+                    type="file"
+                    name="documentPicture"
+                    onChange={handleChange}
+                    disabled={readOnly}
+                    required
+                  />
                 )}
               </Col>
             </Row>
@@ -303,9 +439,13 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
             />
           </div>
           <div className="modal-footer">
-            <Button variant="secondary" onClick={onClose}>Close</Button>
+            <Button variant="secondary" onClick={onClose}>
+              Close
+            </Button>
             {!readOnly && (
-              <Button variant="primary" onClick={handleSubmit}>Submit</Button>
+              <Button variant="primary" onClick={handleSubmit}>
+                Submit
+              </Button>
             )}
           </div>
         </div>
