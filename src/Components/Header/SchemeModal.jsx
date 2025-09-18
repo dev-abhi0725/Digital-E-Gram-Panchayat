@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Box, Typography, List, ListItem, ListItemText, Button } from "@mui/material";
+import {
+  Modal,
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Button,
+} from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
-
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: "background.paper",
   borderRadius: 2,
   boxShadow: 24,
   p: 4,
 };
 
-export default function SchemesModal({ open, onClose , openLoginModal}) {
+export default function SchemesModal({ open, onClose, openLoginModal }) {
   const [schemes, setSchemes] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -29,7 +36,7 @@ export default function SchemesModal({ open, onClose , openLoginModal}) {
       setLoading(true);
       try {
         const querySnapshot = await getDocs(collection(db, "schemes"));
-        const schemesList = querySnapshot.docs.map(doc => ({
+        const schemesList = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
@@ -44,12 +51,17 @@ export default function SchemesModal({ open, onClose , openLoginModal}) {
   }, [open]);
 
   const handleApply = () => {
-    onClose();           // close the modal
-    openLoginModal();  // navigate to login page
+    onClose(); // close the modal
+    openLoginModal(); // navigate to login page
   };
 
   return (
-    <Modal open={open} onClose={onClose} aria-labelledby="schemes-modal-title" className=" scheme-box">
+    <Modal
+      open={open}
+      onClose={onClose}
+      aria-labelledby="schemes-modal-title"
+      className=" scheme-box"
+    >
       <Box sx={style}>
         <Typography id="schemes-modal-title" variant="h6" component="h2" mb={2}>
           Available Schemes
@@ -65,12 +77,17 @@ export default function SchemesModal({ open, onClose , openLoginModal}) {
                 key={scheme.id}
                 secondaryAction={
                   <Button variant="contained" onClick={handleApply}>
-                    Apply
+                    Applyy
                   </Button>
                 }
               >
                 <ListItemText
-                  primary={scheme.name || "Unnamed Scheme"}
+                  primary={
+                    scheme.name
+                      ? scheme.name.charAt(0).toUpperCase() +
+                        scheme.name.slice(1)
+                      : "Unnamed Scheme"
+                  }
                   secondary={scheme.description || ""}
                 />
               </ListItem>
@@ -81,6 +98,5 @@ export default function SchemesModal({ open, onClose , openLoginModal}) {
     </Modal>
   );
 }
-
 
 // final
