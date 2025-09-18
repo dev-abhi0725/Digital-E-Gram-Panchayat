@@ -283,7 +283,7 @@ const SchemeApplicationForm = ({ scheme, onClose, readOnly = false, applicationD
                 )}
               </Col>
               <Col>
-                <Form.Label>Upload Aadhaar Card Pictuer</Form.Label>
+                <Form.Label>Upload Aadhaar Card Picture(Only Image)</Form.Label>
                 {readOnly && formData.documentPicture ? (
                   <a href={formData.documentPicture} target="_blank" rel="noopener noreferrer">View Document</a>
                 ) : (
