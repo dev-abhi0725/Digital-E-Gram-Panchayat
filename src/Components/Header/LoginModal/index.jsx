@@ -31,7 +31,7 @@ const LoginModal = ({ show, onClose, showRegisterModal }) => {
           alert("Invalid Admin ID or Password");
           return;
         } else {
-          setEmail("JHAdmin2015@gmail.com"); // pre-fill email
+          setEmail("JHADMIN@gmail.com"); // pre-fill email
           navigate("/admin-dashboard");
           onClose();
           setEmail("");
@@ -42,7 +42,7 @@ const LoginModal = ({ show, onClose, showRegisterModal }) => {
       }
 
       // Staff unique ID validation
-      if (role === "staff" && uniqueId !== "JH2025STAFF") {
+      if (role === "staff" && uniqueId !== "JHSTAFF") {
         alert("Invalid Staff ID");
         return;
       }
